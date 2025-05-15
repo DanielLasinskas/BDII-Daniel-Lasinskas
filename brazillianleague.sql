@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS brazillianleague;
 CREATE DATABASE brazillianleague;
 USE brazillianleague;
 
--- Criar a tabela Times
+
 CREATE TABLE Times (
     ID_Times INT PRIMARY KEY NOT NULL,
     Elenco TEXT NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE Times (
     Estádio VARCHAR(100) NOT NULL
 );
 
--- Criar a tabela Tabela_Classificação (deve ser criada antes de Jogos)
+
 CREATE TABLE Tabela_Classificação (
     ID_Tabela_Classificação INT PRIMARY KEY NOT NULL,
     ID_Times INT NOT NULL,
@@ -25,7 +25,6 @@ CREATE TABLE Tabela_Classificação (
     FOREIGN KEY (ID_Times) REFERENCES Times(ID_Times)
 );
 
--- Criar a tabela Jogos (faz referência a Tabela_Classificação e Times)
 CREATE TABLE Jogos (
     ID_Jogos INT PRIMARY KEY NOT NULL,
     ID_Times INT NOT NULL,
@@ -36,7 +35,6 @@ CREATE TABLE Jogos (
     FOREIGN KEY (ID_Times) REFERENCES Times(ID_Times)
 );
 
--- Criar a tabela Jogador
 CREATE TABLE Jogador (
     ID_Jogador INT PRIMARY KEY NOT NULL,
     Nome VARCHAR(100) NOT NULL,
@@ -50,7 +48,6 @@ CREATE TABLE Jogador (
     FOREIGN KEY (ID_Times) REFERENCES Times(ID_Times)
 );
 
--- Criar a tabela Usuario
 CREATE TABLE Usuario (
     ID_Usuario INT PRIMARY KEY,
     ID_Times INT NOT NULL,
@@ -60,7 +57,6 @@ CREATE TABLE Usuario (
     FOREIGN KEY (Time_Favorito) REFERENCES Times(ID_Times)
 );
 
--- Criar a tabela Aplicativo
 CREATE TABLE Aplicativo (
     ID_Aplicativo INT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
